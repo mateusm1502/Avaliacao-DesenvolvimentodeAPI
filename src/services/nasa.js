@@ -1,4 +1,5 @@
 const axios = require("axios");
+const { response } = require("express");
 
 const consultarApod = async (data) => {
     const apiKey = process.env.NASA_API_KEY || "DEMO_KEY";
@@ -14,6 +15,18 @@ const consultarApod = async (data) => {
     })
 };
 
+const dados = response.data;
+
+return {
+    date: dados.date,
+    title: dados.title,
+    explanation: dados.explanation,
+    media_type: dados.media_type,
+    url: dados.url,
+    hdurl: dados.hdurl,
+    copyright: dados.copyright
+}
+
 module.exports = {
     consultarApod
-}
+};
