@@ -1,22 +1,28 @@
-const { version } = require('react');
-const swaggerJsdoc = require('swagger-jsdoc');
-const swaggerUi = require('swagger-ui-express');
+
+import swaggerJsdoc from 'swagger-jsdoc';
+import swaggerUi from 'swagger-ui-express';
 
 const options = {
-    definition: {
-        openapi: '3.0.0',
-        info: {
-            title: 'API REST de Missoes Espaciais',
-            version: '1.0.0',
-            description: 'Documentacao da API de Misssoes Espaciais'
-        },
-        servers:[
-            {
-                url: 'http://localhost:3000',
-            },
-        ],
+  definition: {
+    openapi: '3.0.0',
+    info: {
+      title: 'API de Missões Espaciais',
+      version: '1.0.0',
+      description: 'API para consultar e gerenciar missões espaciais'
     },
-     apis: ['./src/router/*.js'],
+    servers: [
+      {
+        url: 'http://localhost:3000'
+      }
+    ]
+  },
+  apis: ['./src/router/*.js']
 };
- 
-export default swaggerJsdoc(opcoes);
+
+const swaggerSpec = swaggerJsdoc(options);
+
+function setupSwagger(app) {
+  app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+}
+
+export default setupSwagger;

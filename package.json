@@ -1,3 +1,4 @@
+
 {
   "name": "api-missoes-espaciais",
   "version": "1.0.0",
@@ -11,11 +12,11 @@
     "url": "git+https://github.com/gabriellycostadossantos063-ux/API-Missoes-Espaciais.git"
   },
   "license": "ISC",
-  "author": "Gabrielly",
+  "author": "Mateus Moreira",
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "test": "jest --coverage",
+    "test": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js --coverage",
     "dev": "node --watch src/server.js",
     "start": "node src/server.js"
   },
